@@ -1,0 +1,10 @@
+{
+  "name": "msq-node-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site served by a Node.js server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
