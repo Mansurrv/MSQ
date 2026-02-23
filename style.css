@@ -1,0 +1,126 @@
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #f1f5f9;
+    margin: 0;
+    padding: 120px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    counter-reset: question-idx;
+}
+
+.score-board {
+    position: fixed;
+    top: 0; width: 100%;
+    background: #ffffff;
+    padding: 20px 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.header-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.score-pill {
+    background: #1e293b;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.container { width: 100%; max-width: 600px; position: relative; }
+
+/* The Connector Line */
+.container::before {
+    content: '';
+    position: absolute;
+    left: 31px; top: 0; bottom: 0;
+    width: 2px;
+    background: #cbd5e1;
+    z-index: 0;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 30px 30px 70px; /* Space for the number */
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.card::before {
+    counter-increment: question-idx;
+    content: counter(question-idx);
+    position: absolute;
+    left: 15px; top: 30px;
+    width: 32px; height: 32px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 4px solid #f1f5f9;
+}
+
+h2 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; margin: 0 0 10px 0; }
+.question-text { font-size: 1.1rem; font-weight: 600; color: #1e293b; margin-bottom: 20px; line-height: 1.5; }
+
+.options { display: grid; gap: 12px; }
+
+.option {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.option:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534; font-weight: 600; }
+.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b; }
+.disabled { pointer-events: none; }
+
+/* Styling for the selected but not yet checked state */
+.selected-choice {
+    border-color: #3b82f6 !important;
+    background-color: #eff6ff !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.check-btn {
+    margin-top: 20px;
+    background-color: #1e293b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto; /* Smaller than the options */
+    transition: background 0.2s;
+}
+
+.check-btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.check-btn:hover:not(:disabled) {
+    background-color: #334155;
+}
